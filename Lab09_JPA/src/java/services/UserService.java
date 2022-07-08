@@ -5,6 +5,7 @@
  */
 package services;
 
+import dataaccess.RoleDB;
 import models.*;
 import dataaccess.UserDB;
 import java.util.List;
@@ -26,8 +27,9 @@ public class UserService {
     }
     
     public void insert(String email, boolean activity, String first_name, String last_name, String password, Role role) throws Exception{
-        User user = new User(email, activity, first_name, last_name, password, role);
         UserDB userDB = new UserDB();
+        User user = new User(email, activity, first_name, last_name, password);
+        user.setRole(role);
         userDB.insert(user);
     }
     

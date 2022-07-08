@@ -41,11 +41,12 @@ EntityManager em = DBUtil.getEmFactory().createEntityManager();
     EntityTransaction trans = em.getTransaction();
     
     try{
-        Role role = user.getRole();
-        role.getUserList().add(user);
+        //Role role = user.getRole();
+        //role.getUserList().add(user);
         trans.begin();
-        em.persist(user);
-        em.merge(role);
+        em.persist(user);   
+        em.merge(user);
+        //em.merge(role);
         trans.commit();
     }catch(Exception e){
         trans.rollback();
@@ -76,11 +77,11 @@ EntityManager em = DBUtil.getEmFactory().createEntityManager();
     EntityTransaction trans = em.getTransaction();
     
         try{
-            Role role = user.getRole();
-            role.getUserList().remove(user);
+//            Role role = user.getRole();
+//            role.getUserList().remove(user);
             trans.begin();
             em.remove(em.merge(user));
-            em.merge(user);
+//            em.merge(user);
             trans.commit();
             
     }catch(Exception e){
